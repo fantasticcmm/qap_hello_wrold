@@ -6,15 +6,6 @@
 			"default":true,
 			"cabability":"itemChoose",
 			"url":"qap://index.js"
-		},
-		{
-			"url":"qap://home/index.js"
-		},
-		{
-			"url":"qap://detail/index.js"
-		},
-		{
-			"url":"qap://order/index.js"
 		}
 	],
 	"iconfonts":[

@@ -89,6 +89,7 @@ var config = {
         //进度插件
         new webpack.ProgressPlugin((percentage, msg) => {
             const stream = process.stderr;
+            process.send && process.send({percentage:percentage, msg:msg});
             if (stream.isTTY && percentage < 0.71) {
                 stream.cursorTo(0);
                 stream.write(`📦   ${msg}`);
