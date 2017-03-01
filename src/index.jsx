@@ -1,12 +1,13 @@
 'use strict';
-import {createElement, Component,render} from 'rax';
+
+import {createElement, Component, render} from 'rax';
 import {View, Text, Modal} from 'nuke';
 import QN from 'QAP-SDK';
 
 class Demo extends Component {
     constructor(props) {
       super(props);
-    
+
       this.state = {};
     }
     render() {
@@ -42,12 +43,12 @@ const styles = {
         margin: 10,
     },
     instructions: {
-        fontSize: 20,
         textAlign: 'center',
         color: '#333333',
         marginBottom: 5,
     },
 };
 
+render(<Demo />);
 
-render(<Demo/>);
+export default Demo;

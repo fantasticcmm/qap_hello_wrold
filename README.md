@@ -5,8 +5,7 @@ your first project of qap(qianniu application platform)
 
 ## Feature
 
-- [x] with nuke 0.4.3
-- [ ] with nuke module buildin
+- [x] with nuke module buildin
 
 ## How to run
 

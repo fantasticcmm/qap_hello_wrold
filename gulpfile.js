@@ -34,6 +34,7 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('start', function(cb) {
+    //alert && alert('start');
     var buildFirstTime = true;
     var webpackConfig = config.dev();
     var compiler = webpack(webpackConfig);
@@ -46,7 +47,24 @@ gulp.task('start', function(cb) {
             }
             buildFirstTime = false;
         }
+        // if (stats.hasErrors()) {
+        //     console.log(stats.toString({ colors: true }));
+        // } else if (buildFirstTime) { //只有第一次启动start的时候才执行
+        //     //只有第一次启动start的时候才执行
+        //     buildFirstTime = false;
+        //     cb && cb();
+        //     // listening
+        //     gutil.log("[webpack-dev-server]", gutil.colors.magenta(devHost));
+        //     gutil.log("[webpack-dev-server]", "To stop service, press [Ctrl + C] ..");
+
+        //     if (typeof process.send === 'function') {
+        //         process.send({ start: 'done' });
+        //     }
+        // }else{
+        //     console.log('\n编译成功，请刷新千牛或者刷新浏览器');
+        // }
     });
+
     var server = new webpackDevServer(compiler, {
         hot: false,
         inline: true,
