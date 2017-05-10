@@ -10,15 +10,13 @@ var webpack = require('webpack');
 var HappyPack = require('happypack');
 var happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length + 2});
 var glob = require('glob');
-var RxPlugin = require('rax-webpack-plugin');
+var RaxPlugin = require('rax-webpack-plugin');
 var LiveReloadPlugin = require('webpack-livereload-plugin');
 
-var componentName = 'Rxfietest',
-    srcPath = path.resolve(__dirname, './src'),
+var srcPath = path.resolve(__dirname, './src'),
     outputPath = path.resolve(__dirname, './build');
 
 var isWin = /^win/.test(process.platform);
-var nukeReg = isWin ? new RegExp(/node_modules\\.*nuke.*/) : new RegExp(/node_modules\/.*nuke.*/);
 
 /**
  * 获取demo文件夹中的入口文件
@@ -60,11 +58,9 @@ var config = {
     },
 
     "externals": [{
-        "weex-rx": "commonjs rax",
         "rax": "commonjs rax",
         "nuke": "commonjs nuke",
-        "QAP-SDK": "commonjs QAP-SDK",
-        "genv": "commonjs genv",
+        "QAP-SDK": "commonjs QAP-SDK"
     }],
 
     module: {
@@ -73,20 +69,18 @@ var config = {
             include: [
                 path.resolve(__dirname, "src")
             ],
-            loaders: ['babel?cacheDirectory=true']
+            loader: 'happypack/loader?id=js'
         }, {
-            test: /\.rxscss$/,
-            loaders: ['rx-css-loader?{"cacheDirectory": "true"}!fast-sass?{"cacheDirectory": "true"}'],
+            test: /\.css$/,
+            loader: 'happypack/loader?id=css',
             include: [
-                path.resolve(__dirname, "src"),
-                nukeReg
+                path.resolve(__dirname, "src")
             ]
         }, {
-            test: /\.scss$/,
-            loaders: ['rx-css-loader?{"cacheDirectory": "true"}!fast-sass?{"cacheDirectory": "true"}'],
+            test: /\.less$/,
+            loader: 'happypack/loader?id=less',
             include: [
-                path.resolve(__dirname, "src"),
-                nukeReg
+                path.resolve(__dirname, "src")
             ]
         },{
             test: /\.json$/,
@@ -107,24 +101,22 @@ var config = {
         new HappyPack({
             cache: true,
             debug: true,
-            id: 'rxscss',
-            loaders: ['rx-css-loader?{"cacheDirectory": "true"}!fast-sass?{"cacheDirectory": "true"}'],
+            id: 'css',
+            loaders: ['stylesheet'],
             threadPool: happyThreadPool
         }),
 
         new HappyPack({
             cache: true,
             debug: true,
-            id: 'scss',
-            loaders: ['rx-css-loader?{"cacheDirectory": "true"}!fast-sass?{"cacheDirectory": "true"}'],
+            id: 'less',
+            loaders: ['stylesheet!less'],
             threadPool: happyThreadPool
         }),
 
-        new RxPlugin({
+        new RaxPlugin({
             target: 'bundle'
         }),
-        //new webpack.BannerPlugin('// {"framework": "Rx"}', {raw: true}),
-        ////Webpack gives IDs to identify your modules. With this plugin,
         //// Webpack will analyze and prioritize often used modules assigning them the smallest ids.
         new webpack.optimize.OccurenceOrderPlugin(),
 
@@ -136,7 +128,6 @@ var config = {
                 stream.write(`📦   ${msg}`);
                 stream.clearLine(1);
             }
-            process.send && process.send({percentage:percentage, msg:msg});
         })
     ]
 };
