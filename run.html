@@ -144,7 +144,7 @@
             var jsUrl = location.protocol + '//' + location.host + wxOutputPath + wxUrl
             var imgDom = document.getElementById('J_img');
             var dropdown = $('ul.dropdown-menu')[0];
-            var with_wx_tpl = location.host + location.pathname + '?_wx_tpl=' + decodeURIComponent(jsUrl);
+            var with_wx_tpl = location.host + location.pathname + '?_wx_tpl=' + encodeURIComponent(jsUrl);
                 // "&_wx_devtool=ws://" + location.hostname + ":8088/debugProxy/native";
             var h5Url = location.hostname + ':' + '8080' +
                 wxOutputPath + wxUrl.substr(0, wxUrl.indexOf('.')) + '.html?_is_qap_=true';
