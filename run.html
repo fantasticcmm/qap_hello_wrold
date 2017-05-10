@@ -147,7 +147,7 @@
             var with_wx_tpl = location.host + location.pathname + '?_wx_tpl=' + jsUrl;
                 // "&_wx_devtool=ws://" + location.hostname + ":8088/debugProxy/native";
             var h5Url = location.hostname + ':' + '8080' +
-                wxOutputPath + wxUrl.substr(0, wxUrl.indexOf('.')) + '.html';
+                wxOutputPath + wxUrl.substr(0, wxUrl.indexOf('.')) + '.html?_is_qap_=true';
             console.log('weex url: http://' + with_wx_tpl);
             console.log('\nh5 url: http://' + h5Url + '__qap=js');
             if (wxUrl) {
