@@ -149,7 +149,7 @@
             var h5Url = location.hostname + ':' + '8080' +
                 wxOutputPath + wxUrl.substr(0, wxUrl.indexOf('.')) + '.html?_is_qap_=true';
             console.log('weex url: http://' + with_wx_tpl);
-            console.log('\nh5 url: http://' + h5Url + '__qap=js');
+            console.log('\nh5 url: http://' + h5Url + '&__qap=js');
             if (wxUrl) {
                 jQuery('#J_img').qrcode('http://' + with_wx_tpl);
                 jQuery("#J_img_text").attr("href", jsUrl)
