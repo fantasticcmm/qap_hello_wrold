@@ -26,7 +26,7 @@ var isWin = /^win/.test(process.platform);
 function getDevEntry(cwd) {
 
     var entry = {};
-    glob.sync('*.jsx', { cwd: cwd }).forEach(function(item, i) {
+    glob.sync('**/pages/**/*.jsx', { cwd: cwd }).forEach(function(item, i) {
         var file = item.replace('.jsx', '');
         entry[file] = [
             item
