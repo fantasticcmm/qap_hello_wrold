@@ -27,11 +27,19 @@ function getDevEntry(cwd) {
 
     var entry = {};
     glob.sync('**/pages/**/*.jsx', { cwd: cwd }).forEach(function(item, i) {
-        var file = item.replace('.jsx', '');
+        var file = "";
+        if(item.lastIndexOf(path.sep)>-1){
+            file = item.substr(item.lastIndexOf(path.sep)).replace(path.sep, '');
+        }
+        
+        file = file.replace('.jsx', '');
         entry[file] = [
             item
         ];
     });
+
+    console.log(entry);
+
     return entry;
 }
 
