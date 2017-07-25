@@ -28,8 +28,8 @@ function getDevEntry(cwd) {
     var entry = {};
     glob.sync('**/pages/**/*.jsx', { cwd: cwd }).forEach(function(item, i) {
         var file = "";
-        if(item.lastIndexOf(path.sep)>-1){
-            file = item.substr(item.lastIndexOf(path.sep)).replace(path.sep, '');
+        if(item.lastIndexOf('/')>-1){
+            file = item.substr(item.lastIndexOf('/')).replace('/', '');
         }
         
         file = file.replace('.jsx', '');

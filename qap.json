@@ -15,7 +15,7 @@
     }
   ],
   "WebRootPath": "",
-  "min_qn_android": "5.10.0",
-  "min_qn_ios": "5.10.0",
-  "jssdk": "1.5.2"
+  "min_qn_android": "5.8.2",
+  "min_qn_ios": "5.8.2",
+  "jssdk": "1.0.19"
 }
